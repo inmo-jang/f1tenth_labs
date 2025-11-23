@@ -17,7 +17,7 @@ setup(
     maintainer_email='inmo3592@gmail.com',
     description='TODO: Package description',
     license='TODO: License declaration',
-    tests_require=['pytest'],
+    # tests_require=['pytest'],
     entry_points={
         'console_scripts': [
             'wall_follow_node = lab3.wall_follow_node:main'
