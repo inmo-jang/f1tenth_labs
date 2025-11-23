@@ -12,6 +12,7 @@ import math
 
 import os
 import csv
+from ament_index_python.packages import get_package_share_directory, PackageNotFoundError
 
 LOOKAHEAD_DISTANCE = 1.20
 HEADING_THRESHOLD = np.radians(45)  # Define threshold in radians (±45 degrees here)
@@ -21,7 +22,11 @@ WAYPOINTS_INTERVAL = 100
 
 
 PACKAGE_NAME = 'lab5'
-waypoint_filepath = os.path.join(os.getcwd(), PACKAGE_NAME, WAYPOINTS_FILENAME)
+try:
+    waypoint_dir = get_package_share_directory(PACKAGE_NAME)
+    waypoint_filepath = os.path.join(waypoint_dir, WAYPOINTS_FILENAME)
+except (PackageNotFoundError, Exception):
+    waypoint_filepath = os.path.join(os.getcwd(), PACKAGE_NAME, WAYPOINTS_FILENAME)
 
 
 
